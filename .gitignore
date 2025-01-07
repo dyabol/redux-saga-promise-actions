@@ -1,4 +1,10 @@
-dist/
 node_modules/
 .idea
 coverage/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

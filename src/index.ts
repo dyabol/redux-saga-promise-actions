@@ -4,7 +4,7 @@ import {Middleware} from 'redux';
 import {put, putResolve} from 'redux-saga/effects';
 
 //Utils
-import _ from 'lodash';
+import merge from 'lodash/merge';
 import {createAction, createCustomAction} from 'typesafe-actions';
 
 //Types
@@ -137,7 +137,7 @@ export const promiseMiddleware: PromiseMiddleware = () => next => action => {
 
     return new Promise((resolve, reject) => {
         next(
-            _.merge(action, {
+            merge(action, {
                 meta: {
                     promise: {
                         resolve,
@@ -181,7 +181,6 @@ export function resolvePromiseAction<RequestType extends TypeConstant, X, Y>(
 export function rejectPromiseAction<RequestType extends TypeConstant, X, Y, undefined>(
     action: PromiseAction<RequestType, X, Y>
 ): void;
-
 
 /**
  * Reject promise action.
